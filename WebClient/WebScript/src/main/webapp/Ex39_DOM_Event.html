@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <form action="Ex39.jsp" method="get">
+        <fileIdset>
+            <legend>주소록</legend>
+            <textarea row="10" cols="30" name="txt" id="txt"></textarea>
+            <input type="submit" id="sub" value="전송하기">
+            <!-- 이미 서버 전송기능을 가지고 있음 -->
+        </fileIdset>
+    </form>
+</body>
+<script>
+    const add = ["아무개", "email:17027@naver.com"];
+    let frm = document.getElementById("frm");
+
+    function addr_Search(event){
+        console.log(event.type);
+
+        let textarea = frm.txt;
+        textarea.value = "이름:주소\n";
+        textarea += add[0] + " , " + add[1] + "\n";
+    }
+
+    frm.addEventListener("submit", function(event){
+        event.preventDefault(); // 기본이벤트 발생을 막는다
+        addr_Search(event);
+
+    });
+</script>
+</html>

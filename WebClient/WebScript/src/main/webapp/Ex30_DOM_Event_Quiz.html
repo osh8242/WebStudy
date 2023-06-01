@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            let myphotos = ["images/1.jpg", "images/3.jpg", "images/3.jpg", "images/4.jpg"];
+            let img = document.getElementById('img');
+            let prv = document.getElementById('prv');
+            let next = document.getElementById('next');
+
+            prv.addEventListener('click', goToPrvImage);
+            next.addEventListener('click', goToNextImage);
+            
+            
+            function goToPrvImage(){
+                let index = img.getAttribute('src').charAt(7)-1;
+                if(index == 0) index = 3;
+                else index--;    
+                img.setAttribute('src', 'images/' + (++index) + '.jpg');   
+            }
+            function goToNextImage(){
+                let index = img.getAttribute('src').charAt(7)-1;
+                if(index == 3) index = 0;
+                else index++;    
+                img.setAttribute('src', 'images/' + (++index) + '.jpg');   
+            }    
+        }
+        /*
+        a click 이벤트를 동적으로 부여하고 (addEventListener)
+        버튼을 누를 때마다 다음, 이전 사진이 나오도록...
+        순환하도록(4에서 다음이면 1로, 1에서 이전이면 4로)
+        */
+       
+       
+    </script>
+</head>
+<body>
+    <h3>DOM 슬라이드</h3>
+    <img src="images/1.jpg" alt="이미지" id="img" width="200" height="200">
+    <hr>
+    <a href="#" id="prv">이전</a>||<a href="#" id="next">다음</a>
+</body>
+</html>

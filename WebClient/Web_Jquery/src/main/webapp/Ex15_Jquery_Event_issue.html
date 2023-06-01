@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+    <style>
+        .my{background-color: lime;}
+    </style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('#btn1').on('click', function(){
+                let ptag = $('<p></p>',{
+                                            'class':'my',
+                                            'text':'동적추가',
+                                            'click':function(){$(this).css('background','tomato');}
+                                        }
+                ); //p태그를 만들고 json객체를 통해 속성을 정의
+                $(ptag).appendTo($('#result1'));                            
+            })
+            $('#btn2').on('click', function(){
+                let imgtag = $('<img>',{
+                                            'src':'images/1.png',
+                                            'alt':'이미지가 없어용..',
+                                            'width':'10%',
+                                            'height':'10%',
+                                            'click':function(){$(this).css('border','1px solid tomato');}
+                                        }
+                ); //p태그를 만들고 json객체를 통해 속성을 정의
+                $(imgtag).appendTo($('#result2'));
+                            
+            })
+		});
+
+        //btn2 클릭하면 img 태그생성하고 
+        //src images/1.jpg alt, width height, clkick css() 이미지에 border설정
+	
+	</script>
+</head>
+<body>
+	<div>
+		<h3>버튼 클릭시 동적태그 생성 추가하기</h3>
+		<input type="button" value="확인" id="btn1">
+		<div id="result1"></div>
+	</div>
+	<div>
+		<h3>버튼 클릭시 동적 이미지 태그 생성 추가하기</h3>
+		<input type="button" value="확인" id="btn2">
+		<div id="result2"></div>
+	</div>
+</body>
+</html>

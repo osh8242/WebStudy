@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style>
+        .box {
+            width:100px; height: 100px;
+        }
+        .box1 {
+            background-color: red;
+            position: static;
+            left: 10px;
+            top: 10px;
+        }
+        .box2 {
+            background-color: blue;
+            position: relative; /* 원래 있어야할 위에서 상대위치 */
+            left: 60px;
+            top: 10px;            
+        }
+        .box3 {
+            background-color: green;
+            position: absolute; /* 웹페이지 좌측상단을 기준으로한 절대위치 */
+            left: 60px;
+            top: 10px;
+        }
+        .box4 {
+            background-color: yellow;
+        }
+    </style>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    <header></header>
+    <div class="box box1">default static</div>
+    <div class="box box2">relative</div>
+    <div class="box box3">absolute</div>
+    <div class="box box4">fixed</div>
+</body>
+</html>

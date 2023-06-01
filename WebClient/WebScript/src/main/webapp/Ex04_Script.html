@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script type="text/javascript">
+        /*
+        1. 변수 생성 > 값 입력 > 타입이 생성됨
+        var a; 정의되지 않았어요.
+        let b;
+        a=10; 타입이 설정됨(Number)
+        b="A"; 타이빙 설정됨 (String)
+
+        ES5 이전 문법 (var : 전역(페이지 전체), 지역(함수 안)) 
+        >> 혼란 >> 2015 ES6(ECMA)에서부터.. 
+        >> let, const
+
+        현재) var, let, const
+        신규) let, const
+
+        초기화(변수 처음 값을 갖는 것)
+        javascript (정수, 실수, boolean, 문자(열))
+        내부적으로 가지고 있는 타입(Number, boolean, Array, Object, String 등등)
+
+        변수(scope)
+        1. 현재 페이지 기준 > Ex04_Script.html >> 유효범위
+        1.1 let name='kglim'; 페이지 전체(Ex04_Script.html) >> global : 전역
+        1.2 함수 안의 변수 function call(){ let age=20; } >> local : 지역
+        */
+        let name = 'kglim';
+        function call(){
+            let age=20;
+            console.log("키미노 나마에와.. " + name + " 나이와.. : "+ age);
+        }
+
+        let n; //초기화되어있지 않아여..
+        console.log(n);
+        n = 100;
+        //사용하기 전에만 초기화하면 되요..
+
+        let i,j;
+        i = 200;
+        j = 200;
+        let result = i+j;
+
+        let intnum = 10; // 정수
+        let dnum = 12.345; // 실수
+        let flag = true; // boolean
+        let str = null; // 값이 없다
+        let str2 = "ABC"; // 문자열
+        console.log(typeof(intnum)); // number
+        console.log(typeof(dnum)); // number
+        console.log(typeof(flag)); // boolean
+        console.log(typeof(str)); // object
+        console.log(typeof(str2)); // string
+
+        //연산자
+        //산술(+,-,*,/,%), 논리, 관계
+
+        let num1 = 10;
+        let num2 = 3;
+        document.write((num1/num2) + "<br>"); //실수범위
+        document.write((num1%num2) + "<br>");
+        
+        //관계 == ( === 값과 타입 모두 일치)
+        let a = 3;
+        let b = 5;
+        console.log( a == b );
+        console.log( a != b );
+        console.log( a > b );
+
+        //논리 (&&, ||)
+        console.log(10>5 && 1!=3); // 둘다 참이면 true
+        console.log(10<5 && 1!=3); // 둘중에 하나만 참이어도 true
+
+        //삼항연산자
+        let result2 = (4%2==0) ? "even" : "odd" ;
+        console.log(result2) // even
+
+        //대입연산자
+        let p = 10;
+        let k = 5;
+        p+=k; // p = p+k;
+        console.log(p);
+        
+        let x= 5+5;
+        let y = "5" + 5; // +연산자는 산술or결합
+        console.log(x); // 산술연산자로 작용
+        console.log(y); // 결합연산자로 작용
+
+        let v = "5";
+        let v2 = 5;
+        let v3 = 5;
+        console.log(v==v2); // 값을 비교하는 연산자 true
+        console.log(v===v2); // 값+타입까지 비교하는 연산자 false
+        console.log(v2===v3); // 값+타입까지 비교하는 연산자 ture
+
+
+    </script>
+</head>
+<body>
+    <button onclick="call()">변수확인..!</button>
+</body>
+</html>

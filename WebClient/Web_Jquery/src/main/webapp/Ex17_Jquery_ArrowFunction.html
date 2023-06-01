@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$.each(["A","B"], function(index, element){
+                console.log(index + " / " + element);
+            });
+
+            $.each(["A","B"], (index, element) => console.log(index + " / " + element));
+            
+            //화살표함수는 this 자기 자신을 객체로 갖고 가지 않고
+            //윈도우 객체를 가지고 실행되므로 그냥은 못씀;
+            //화살표 쓰고싶으면 element 가지고가라..
+            $.each(["A","B"],()=>console.log($(this)));
+
+            $('p').each(()=>console.log("this : " + $(this).text()));
+            
+		});	
+	</script>	
+</head>
+<body>
+    <p>java</p>
+    <p>jsp</p>
+    <p>oracle</p>
+    <p>jquery</p>
+    
+
+</body>
+</html>

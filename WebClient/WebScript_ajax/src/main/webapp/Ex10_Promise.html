@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //$.ajax('url', function(response){})
+        //$.ajax('url', (response)=>{})
+         
+        //비동기 함수 처리
+        /*
+        function delay(sec, callback){ //callback parameter 함수의 주소를 받는다.
+            setTimeout(()=>{
+                callback(new Date());
+            },sec*1000);
+        }
+
+        console.log('delay start :',new Date());
+        delay(0,(result)=>{console.log(result)});
+        console.log('dealy end :', new Date());
+
+        결과 : 비동기 함수는 순서가 보장되지 않는다
+        
+        //3개의 함수를 만들어서 일정한 1초 또는 2초 간격으로 출력되기를 원해요...
+        function delay(sec, callback){ //callback parameter 함수의 주소를 받는다.
+            setTimeout(()=>{
+                callback(new Date());
+            },sec*1000);
+        }
+
+        delay(2,(result)=>{console.log(1, result)});
+        delay(2,(result)=>{console.log(2, result)});
+        delay(2,(result)=>{console.log(3, result)});
+        */
+
+        //3개의 비동기 함수가 순차적으로 실행되기를 원해요
+        //함수(함수(함수()))
+        /*
+        function delay(sec, callback){ //callback parameter 함수의 주소를 받는다.
+            setTimeout(()=>{
+                callback(new Date());
+            },sec*1000);
+        }
+
+        //재귀적으로 함수를 호출하면 된다...
+        //이러면 유지보수가 너무 힘들어진다...
+        
+        delay(2,(result)=>{
+            console.log(1, result)
+            delay(2,(result)=>{
+                console.log(2, result)
+                delay(2,(result)=>{
+                    console.log(3, result)
+                });
+            });
+        });
+        */
+        // callback의 재귀적 스택을 해결하자
+        // 비동기를 순차적으로 실행하자
+        // Promise >> 순차적 실행을 보장하는 객체
+        /*
+        function delayPromise(sec){
+            return new Promise((resolve, reject) => { // 정상처리(resolve), 예외처리(reject)
+                setTimeout(()=>{
+                    resolve(new Date());
+                },sec*1000);
+            });
+        }
+
+        delayPromise(1).then((result)=>{console.log(1,result);})
+        */
+        //당신이 Promise를 사용한다 하더라도 재귀적 callback처럼 사용한다면.. 다를것이 없다.
+
+        function delayPromise(sec){
+            return new Promise((resolve, reject) => { // 정상처리(resolve), 예외처리(reject)
+                setTimeout(()=>{
+                    resolve(new Date());
+                },sec*1000);
+            });
+        }
+
+        //이렇게 사용하는 것은 문제가 없지만 재귀적 함수처리와 다를바가 없다
+        //유지보수가 여전히 어렵다.
+        /*
+        delayPromise(1).then((result)=>{
+            console.log(1,result);
+            delayPromise(1).then((result)=>{
+                console.log(2,result);
+            });
+        });
+        */
+
+        /* good..
+        delayPromise(1).then((result)=>{
+            console.log(1,result);
+            return delayPromise(1); //promise 객체를 리턴하므로 then을 체인으로 이어사용가능
+        }).then((result)=>{
+            console.log(2,result);
+            return delayPromise(1);
+        }).then((result)=>{
+            console.log(3,result);           
+        })
+        */
+
+        //간단하게
+        delayPromise(1).then((result)=>{
+            console.log(1,result);
+            return delayPromise(1); //promise 객체를 리턴하므로 then을 체인으로 이어사용가능
+        }).then((result)=>{
+            console.log(2,result);
+            return delayPromise(1);
+        }).then((result)=>{
+            console.log(3,result);  
+            return "kosa";         
+        }).then((result)=>{
+            console.log(result);
+        });
+        //참고 : https://www.w3schools.com/js/js_promise.asp
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

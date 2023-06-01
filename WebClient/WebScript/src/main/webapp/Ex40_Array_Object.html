@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //javascript를 자바로 비유하면 java의 collection과 동일
+
+        let array = ['포도', '사과'];
+        console.log(array.toString()); // toString이 재정의되어있지 않을까?
+        console.log(array + "-default toString()");
+
+        for(let i = 0 ; i < array.length ; i++){
+            console.log(array[i]);
+        }
+
+        for(let index in array){
+            console.log(array[index]);
+        }
+
+        for(let value of array){
+            console.log(value);
+        }
+
+        //['포도', '사과'] --> [0][1]
+        //동적
+        array[2] = "바나나";
+        console.log(array.toString() + " / " + array.length);
+
+        //위처럼 넣는 방법은 권장하지 않습니다.
+        //권장 >> array.push("바나나");
+        array[10] = "애플망고"; // very bad code
+        console.log(array.toString + " / " + array.length);
+
+        console.log(array[6] + " >> array[6]");
+
+        let array2 = ["one", "two", "three"];
+        array2.length = 2;
+        console.log(array2 + "---" + array2.length);
+        array2.length=10; // 줄이는 것도, 늘리는 것도 가능하다..(but 쓰지마세요)
+
+        //권장 방법
+		//Array >> stack >> LIFO >> push >> pop (good)
+		let array3=[];
+		array3.push("aa");
+		array3.push("bb");
+		array3.push("cc");
+		array3.push("dd");
+		
+		console.log(array3.pop());
+		console.log(array3.pop());
+		console.log(array3.pop());
+		console.log(array3.pop());
+		
+		console.log(array3.pop());
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

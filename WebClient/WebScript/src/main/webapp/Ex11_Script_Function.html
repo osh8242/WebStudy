@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Page Title</title>
+    <script type="text/javascript">
+        let str = "10+20+30";
+        document.write(str + "<br>");
+
+        //1, eval()
+        //문자열 수식 >> 수학적 수식 >> "10+20+30" >> eval() >> 10+20+30 을 계산해버림
+        //"10+20A+30" >> Error 난다
+        //문자열 숫자 >> 숫자
+        document.write("eval() : " + eval(str) + "<br>");
+
+        //2. isNaN >> Not a Number >> 너 숫자 아니냐 >> true >> 숫자(false);
+        document.write(isNaN("12345") + "<br>");
+        document.write(isNaN("12345A") + "<br>");
+        document.write(isNaN("대한민국") + "<br>");
+        document.write(isNaN('12345') + "<br>");
+        
+        //https://www.w3schools.com/jsref/jsref_obj_string.asp
+        //문자열 함수 찾아보기
+        //https://www.w3schools.com/jsref/jsref_obj_number.asp
+        //숫자형 함수 찾아보기
+
+        let i = "100";
+        let j = "200";
+        document.write("결합 : " + (i + j));
+        document.write("<br> 연산 " + (Number(i)+Number(j)));
+
+        //Number()
+        //parseInt()
+        //parseFloat()
+
+        /* 
+		사건(미리 만들어 놓았어요)>>  개발자 ( 행위 ) >> 함수 생성 >> 사건 발생 (함수 연결 ....) >> 핸들러	
+		필수 이벤트
+		Here is a list of some common HTML events:
+
+		Event			Description
+		onchange			An HTML element has been changed
+		onclick				The user clicks an HTML element
+		onmouseover			The user moves the mouse over an HTML element
+		onmouseout			The user moves the mouse away from an HTML element
+		onkeydown			The user pushes a keyboard key
+		onload				The browser has finished loading the page
+		
+		https://www.w3schools.com/jsref/dom_obj_event.asp  더 많은 정보 .....
+		
+		
+		POINT
+		onload				The browser has finished loading the page
+		>>index.html    >> body 안에 있는 모든 요소가 웹 브라우져 메모리에 로딩 되고 난 후에
+		>> onload 에 함수를 연결하면 ... 함수는 언제 호출 (모든 요소가 로딩되고 난 후에 호출  보장 ...)
+
+        회원가입시 []-[]
+        onfocus="" >> 언제 발생? >> 포커스가 요소에 들어오면
+        onblur="" >> 언제 발생? >> 포커가 요소를 떠나면 발생
+		*/
+
+        function bodyLoad(){
+            console.log("load......");
+            //나는 body 안에 있는 모든 요소를 제어를 할 수 있다 보장...
+            let data = document.myform.money.value;
+            console.log(isNaN(data)); // false 나오면 숫자
+        }
+
+        function focusFunc(){
+            //DOM
+            document.getElementById("myinput").style.background="gold";
+        }
+
+        function blurFunc(){
+            //DOM
+            document.getElementById("myinput").style.background="white";
+        }
+
+        function selectTag(){
+            const value = document.myform.sel.value;
+            alert(value);
+        }
+
+        function changeColor(obj){
+            //JAVA : this (객체자신)
+            //Javascript : this (요소자신)
+            console.log(obj); // 
+            obj.style.backgroundColor="gold";
+        }
+
+        function changeColor2(obj){
+            console.log(obj); // 
+            obj.style.backgroundColor="white";
+        }
+
+    </script>
+
+<body onload="bodyLoad()">
+    <form action="#" name="myform">
+        <input type="text" id="myinput" name="myinput" onfocus="focusFunc()" onblur="blurFunc()">
+        <br>
+        <select name="sel" onchange="selectTag()">
+            <option value="A">AA</option>
+            <option value="B">BB</option>
+            <option value="C">CC</option>
+            <option value="D">DD</option>
+        </select>
+        <br>
+        <input type="text" onmouseover="changeColor(this)" onmouseout="changeColor2(this)"><br>
+        <input type="text"><br>
+        <input type="text" value="1000" name="money"><br>
+    </form>
+</body>
+</html>

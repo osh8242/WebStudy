@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Page Title</title>
+</head>
+<body>
+    <p>scope</p>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+</body>
+<script type="text/javascript">
+    var gname="world"; //global variable (모든 함수에서 적용가능 : 페이지 안에서)
+    myFunction();
+    function myFunction(){
+        //함수 안에서 변수 생성
+        //local variable
+        aaa = "아무개"; //global 변슈인정 (앞에 아무것도 안붙이고 변수 쓰지마라 XXXXX)
+        console.log("지역 aaa : " + aaa);
+
+        var carname="volvo"; //local
+        document.getElementById("demo1").innerHTML = typeof(carname) + " " + carname + "<hr>";
+        document.getElementById("demo2").innerHTML = typeof(gname) + " " + gname + "<hr>";
+    }
+    console.log(aaa);
+
+</script>
+</html>

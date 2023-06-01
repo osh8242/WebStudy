@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <!--
+        UI > js(함수,이벤트) > css    
+    -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/sunny/jquery-ui.css">  
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+    $(function(){
+
+      $('#datepicker').datepicker({
+        dateFormat: "yy년mm월dd일"
+      });
+
+      $('#dialog').dialog({
+        autoOpen: false,
+        show:{effect:"blind",duration:2000},
+        hide:{effect:"explode",duration:1000},
+        buttons:{
+          "확인":function(){$(this).dialog('close')}
+        },
+        resizeable: false,
+        modal: true // 팝업을 닫기 전까지는 부모창 접근불가
+      });     
+
+      $('#opener').click(function(){
+        $('#dialog').dialog("open");
+      });
+    });
+  </script>
+</head>
+<body>
+  <p>일반내용...</p>
+  Date:<input type="text" id="datepicker">
+  <hr>
+  <button id="opener">open popup</button>
+  <!-- 팝업 내용 -->
+  <div id="dialog" title="Basic Dialog">
+      <p>오늘은 목요일</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Page Title</title>
+    <script type="text/javaScript">
+        /*
+        onload 이벤트가 발생하는 시점 : 
+        body 태그 안에 있는 모든 요소가 브라우저 메모리에 loading된 후에 >> DOM 생성
+        함수하나 : function call(){}
+
+        1. <body onload="call()">
+        2. window.onload = call();
+        3. window.onload = function(){}
+        function call(){} 로 함수를 만드는 이유는 이름을 지어 재사용하기 위해..!
+        재사용하지 않을 거라면 함수 이름을 생략 >> 익명함수(일회성함수)      
+        */
+        window.onload = function(){ //익명함수 (핸들러)
+            let out = "";
+            out += "<ul>";
+                out += "<li>javascript</li>";
+                out += "<li>jquerry</li>";
+                out += "<li>react</li>";
+            out += "</ul>";
+            document.body.innerHTML = out;
+
+            //DOM >> 동적 >> 기존에 있던 것을 추가, 있는 것을 삭제, 있는 것을 변경
+            const header = document.createElement("h1");
+            //header >> <h1></h1>
+            const textnode = document.createTextNode("hello");
+
+            header.appendChild(textnode);
+            //<h1>hello</h1>
+
+            console.log(header);
+
+            //body 자식요소
+            //기존에 .... <ul></ul>
+
+            document.body.appendChild(header);
+
+            // img 태그 동적으로 생성하고 src 속성도 동적 추가하고 src 속성에 w3school.jpg를 넣고
+            // body 자식으로 append 해보세요
+            //width=150랑 height=150도 추가해보세요
+            
+            const img = document.createElement("img"); // <img> 생성
+            img.setAttribute("src", "mss.png"); // img 태그에 src 속성 추가
+            img.setAttribute("width", "150px"); // img 태그에 width 속성 추가
+            img.setAttribute("height", "150px"); // img 태그에 height 속성 추가
+            document.body.appendChild(img);
+            // <img src="mss.png" width="150px" height="150px">
+
+        }
+
+    </script>
+</head>
+<body>
+    Hello World!
+</body>
+</html>
